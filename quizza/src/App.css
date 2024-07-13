@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  padding: 20px;
   background-color: #f0f2f5;
   min-height: 100vh;
 }
@@ -39,4 +38,33 @@
 
 .create-module-button:hover {
   background-color: #21a1f1;
+}
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: 1fr auto; /* 1fr for input box, auto for button */
+  gap: 10px;
+  padding-top: 30px;
+  padding-left: 400px;
+  padding-right: 400px;
+  padding-bottom: 30px;
+  background-color: lightgrey; /* or any other shade of pink */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px); /* Adjust height as needed */
+  margin-top: -30px;
+}
+
+.no-modules-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #555; /* or any color you prefer */
 }

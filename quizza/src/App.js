@@ -48,35 +48,44 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <div className="modules">
-                {modules.map(module => (
-                  <Module
-                    key={module.id}
-                    module={module}
-                    onDelete={deleteModule}
-                    onRename={renameModule}
+        <div className="content">
+          <Routes>
+            <Route path="/" element={
+              <>
+                {modules.length === 0 && (
+                  <div className="no-modules-message">
+                    No Courses!
+                  </div>
+                )}
+                {modules.length > 0 && (
+                  <div className="modules">
+                    {modules.map(module => (
+                      <Module
+                        key={module.id}
+                        module={module}
+                        onDelete={deleteModule}
+                        onRename={renameModule}
+                      />
+                    ))}
+                  </div>
+                )}
+                <div className="bottomSection">
+                  <input
+                    type="text"
+                    placeholder="Enter module name"
+                    value={newModuleName}
+                    onChange={(e) => setNewModuleName(e.target.value)}
                   />
-                ))}
-              </div>
-              <div className="create-module-form">
-                <input
-                  type="text"
-                  placeholder="Enter module name"
-                  value={newModuleName}
-                  onChange={(e) => setNewModuleName(e.target.value)}
-                />
-                <button className="create-module-button" onClick={createModule}>
-                  Create new module
-                </button>
-              </div>
-            </>
-          } />
-          <Route path="/module/:moduleName" element={<CategoryList />} />
-          <Route path="/module/:moduleName/category/:categoryName/*" element={<CategoryPage />} />
-        </Routes>
+                  <button className="create-module-button" onClick={createModule}>
+                    Create new module
+                  </button>
+                </div>
+              </>
+            } />
+            <Route path="/module/:moduleName" element={<CategoryList />} />
+            <Route path="/module/:moduleName/category/:categoryName/*" element={<CategoryPage />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
