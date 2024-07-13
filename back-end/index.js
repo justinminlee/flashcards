@@ -17,8 +17,10 @@ app.use(cors());
 app.use(express.json()); // Middleware to parse JSON in the request body
 
 const { generateAnkiCards } = require('./controller/question');
+const { handleModuleCreation } = require("./controller/course")
 
-app.post("/new_module", )
+// TO DO: send module name
+app.post("/new_module", handleModuleCreation)
 
 
 app.post('/upload', generateAnkiCards);
