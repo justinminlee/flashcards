@@ -1,32 +1,41 @@
 .App {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  text-align: center;
+  background-color: #f0f2f5;
+  min-height: 100vh;
 }
 
-.flash-card {
+.modules {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.create-module-form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-module-form input {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 20px;
+  width: 200px;
+}
+
+.create-module-button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: white;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.flash-card .answer {
-  color: green;
-  font-weight: bold;
-}
-
-.test-question {
-  margin-bottom: 20px;
-}
-
-.test-results .correct {
-  color: green;
-}
-
-.test-results .incorrect {
-  color: red;
-}
-
-section {
-  margin-bottom: 40px;
+.create-module-button:hover {
+  background-color: #21a1f1;
 }

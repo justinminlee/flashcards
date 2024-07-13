@@ -1,97 +1,93 @@
-import React, { useState } from 'react';
-import jsonData from './data.json';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
+import Header from './components/Header';
+import Module from './components/Module';
+import CategoryList from './components/CategoryList';
+import CategoryPage from './components/CategoryPage';
+import sampleData from './data/sampleData.json';
 import './App.css';
 
 function App() {
-  // use this url for the API
-  const api_url = 'http://localhost:3001/upload_file';
+  const [modules, setModules] = useState([]);
+  const [newModuleName, setNewModuleName] = useState('');
 
-  const [currentFlashCard, setCurrentFlashCard] = useState(0);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [testAnswers, setTestAnswers] = useState({});
-  const [showTestResults, setShowTestResults] = useState(false);
+  // Load modules from localStorage when the app starts
+  useEffect(() => {
+    const savedModules = localStorage.getItem('modules');
+    if (savedModules) {
+      setModules(JSON.parse(savedModules));
+    }
+  }, []);
 
-  const handleFlashCardNext = () => {
-    setCurrentFlashCard((prev) => (prev + 1) % jsonData.flash_cards.length);
-    setShowAnswer(false);
+  // Save modules to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('modules', JSON.stringify(modules));
+  }, [modules]);
+
+  const createModule = () => {
+    if (newModuleName.trim() === '') {
+      alert('Module name cannot be empty');
+      return;
+    }
+    const newModule = {
+      id: modules.length ? modules[modules.length - 1].id + 1 : 1,
+      name: newModuleName
+    };
+    setModules([...modules, newModule]);
+    setNewModuleName('');
   };
 
-  const handleAnswerChange = (question, option) => {
-    setTestAnswers({ ...testAnswers, [question]: option });
+  const deleteModule = (id) => {
+    setModules(modules.filter(module => module.id !== id));
   };
 
-  const handleSubmitTest = () => {
-    setShowTestResults(true);
-  };
-
-  const checkAnswer = (question, option) => {
-    const correctAnswers = jsonData.multiple_answer_questions.find((q) => q.question === question).correct_answers;
-    return correctAnswers.includes(option);
+  const renameModule = (id, newName) => {
+    setModules(modules.map(module => module.id === id ? { ...module, name: newName } : module));
   };
 
   return (
-    <div className="App">
-      <h1>Java Introduction</h1>
-
-      <section>
-        <h2>Flash Cards</h2>
-        <div className="flash-card">
-          <div onClick={() => setShowAnswer(!showAnswer)}>
-            <p>{jsonData.flash_cards[currentFlashCard].question}</p>
-            {showAnswer && <p className="answer">{jsonData.flash_cards[currentFlashCard].answer}</p>}
-          </div>
-          <button onClick={handleFlashCardNext}>Next</button>
-        </div>
-      </section>
-
-      <section>
-        <h2>Multiple Choice Test</h2>
-        {jsonData.multiple_answer_questions.map((question) => (
-          <div key={question.question} className="test-question">
-            <p>{question.question}</p>
-            {question.options.map((option) => (
-              <label key={option}>
-                <input
-                  type="checkbox"
-                  checked={testAnswers[question.question]?.includes(option) || false}
-                  onChange={() => handleAnswerChange(question.question, option)}
-                />
-                {option}
-              </label>
-            ))}
-          </div>
-        ))}
-        <button onClick={handleSubmitTest}>Submit Test</button>
-        {showTestResults && (
-          <div className="test-results">
-            {jsonData.multiple_answer_questions.map((question) => (
-              <div key={question.question}>
-                <p>{question.question}</p>
-                {question.options.map((option) => (
-                  <div key={option} className={checkAnswer(question.question, option) ? 'correct' : 'incorrect'}>
-                    {option}
-                  </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <div className="modules">
+                {modules.map(module => (
+                  <Module
+                    key={module.id}
+                    module={module}
+                    onDelete={deleteModule}
+                    onRename={renameModule}
+                  />
                 ))}
               </div>
-            ))}
-          </div>
-        )}
-      </section>
-
-      <section>
-        <h2>Related Topics and YouTube Lessons</h2>
-        <ul>
-          {jsonData.related_topics_or_youtube_lesson_links.map((item) => (
-            <li key={item.topic}>
-              <a href={item.youtube_link} target="_blank" rel="noopener noreferrer">
-                {item.topic}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </div>
+              <div className="create-module-form">
+                <input
+                  type="text"
+                  placeholder="Enter module name"
+                  value={newModuleName}
+                  onChange={(e) => setNewModuleName(e.target.value)}
+                />
+                <button className="create-module-button" onClick={createModule}>
+                  Create new module
+                </button>
+              </div>
+            </>
+          } />
+          <Route path="/module/:moduleName" element={<CategoryList />} />
+          <Route path="/module/:moduleName/category/:categoryName" element={<CategoryRouteWrapper />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
+
+const CategoryRouteWrapper = () => {
+  const { moduleName, categoryName } = useParams();
+  // Here, you should fetch or find the data for the specific category
+  // For demonstration, we use sampleData
+  return <CategoryPage data={sampleData} categoryName={categoryName} />;
+};
 
 export default App;
