@@ -1,0 +1,37 @@
+{
+    "mainTopics": [
+      {
+        "title": "Title 1",
+        "description": "Description 1"
+      },
+      {
+        "title": "Title 2",
+        "description": "Description 2"
+      }
+    ],
+    "flashcards": [
+      {
+        "description": "Flashcard question or prompt",
+        "answer": "Flashcard answer"
+      }
+    ],
+    "quizzes": [
+      {
+        "question": "Quiz question",
+        "answers": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "rightAnswer": "Correct option"
+      }
+    ],
+    "relatedTopics": [
+      {
+        "suggestion": "Related topic suggestion",
+        "linkName": "Link name",
+        "url": "URL"
+      }
+    ]
+  }
