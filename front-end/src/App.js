@@ -3,9 +3,6 @@ import jsonData from './data.json';
 import './App.css';
 
 function App() {
-  // use this url for the API
-  api_url = 'http://localhost:3001/upload_file';
-
   const [currentFlashCard, setCurrentFlashCard] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [testAnswers, setTestAnswers] = useState({});
