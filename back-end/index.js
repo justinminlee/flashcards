@@ -35,7 +35,9 @@ app.use((req, res, next) => {
 
 // TO DO: send module name
 app.post("/new_module", handleModuleCreation);
-app.post("delete_module", handleModuleDeletion);
+
+// USE FOR MODULE DELETION
+app.post("/delete_module", handleModuleDeletion);
 
 app.post('/upload', generateAnkiCards);
 

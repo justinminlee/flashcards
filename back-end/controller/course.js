@@ -1,18 +1,20 @@
 const handleModuleCreation = async (req, res) => {
-    if (!req.body.module_name) {
-      return res.status(400).send('No module name uploaded');
-    }
-  
-    const datetime = new Date();
-  
-    try {
-      const [id] = await req.db('user').insert({ Date: datetime, Course: req.body.module_name }).returning('Id');
-      console.log(id);
-      return res.status(200).send({ id });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).send('Error creating module');
-    }
+
+
+  if (!req.body.name) {
+    return res.status(400).send('No module name uploaded');
+  }
+
+  const datetime = new Date();
+
+  try {
+    const [id] = await req.db('user').insert({ Date: datetime, Course: req.body.name });
+    console.log(id);
+    return res.status(200).send({ id });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send('Error creating module');
+  }
   };
 
   // deleting a module based on id
