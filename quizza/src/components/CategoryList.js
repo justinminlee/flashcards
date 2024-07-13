@@ -31,9 +31,13 @@ const CategoryList = () => {
       alert('Category name and at least one file are required');
       return;
     }
+    const fileMetadata = files.map(file => ({
+      name: file.name,
+      type: file.type
+    }));
     const newCategory = {
       name: newCategoryName,
-      files
+      files: fileMetadata
     };
     setCategories([...categories, newCategory]);
     setNewCategoryName('');
@@ -73,77 +77,78 @@ const CategoryList = () => {
       alert('Please select files to upload');
       return;
     }
+    const fileMetadata = uploadingFiles.map(file => ({
+      name: file.name,
+      type: file.type
+    }));
     const updatedCategories = [...categories];
-    updatedCategories[index].files = [...updatedCategories[index].files, ...uploadingFiles];
+    updatedCategories[index].files = [...updatedCategories[index].files, ...fileMetadata];
     setCategories(updatedCategories);
     setUploadingFiles([]);
   };
 
+  const handleDeleteFile = (categoryIndex, fileIndex) => {
+    const updatedCategories = [...categories];
+    updatedCategories[categoryIndex].files = updatedCategories[categoryIndex].files.filter((_, i) => i !== fileIndex);
+    setCategories(updatedCategories);
+  };
+
   return (
-    <>
-      <div className="category-list">
-        <h2>{moduleName} Categories</h2>
-        <div className="categories">
-          {categories.length === 0 ? (
-            <p>No categories</p>
-          ) : (
-            categories.map((category, index) => (
-              <div key={index} className="category">
-                {isEditing && currentCategoryIndex === index ? (
-                  <div>
-                    <input
-                      type="text"
-                      value={renameCategoryName}
-                      onChange={(e) => setRenameCategoryName(e.target.value)}
-                    />
-                    <button onClick={renameCategory}>Save</button>
-                  </div>
-                ) : (
-                  <>
-                    <div onClick={() => handleNavigate(category.name)}>
-                      {category.name}
-                    </div>
-                    <button onClick={() => startRenameCategory(index)}>Rename</button>
-                    <button onClick={() => deleteCategory(index)}>Delete</button>
-                    <div className="files">
-                      {category.files.map((file, i) => (
-                        <div key={i} className="file">
-                          {file.name}
-                        </div>
-                      ))}
-                    </div>
-                    <input
-                      type="file"
-                      multiple
-                      onChange={(e) => setUploadingFiles(Array.from(e.target.files))}
-                    />
-                    <button onClick={() => handleAddFiles(index)}>Add Files</button>
-                  </>
-                )}
+    <div className="category-list">
+      <h2>{moduleName} Categories</h2>
+      <div className="categories">
+        {categories.map((category, index) => (
+          <div key={index} className="category">
+            {isEditing && currentCategoryIndex === index ? (
+              <div>
+                <input
+                  type="text"
+                  value={renameCategoryName}
+                  onChange={(e) => setRenameCategoryName(e.target.value)}
+                />
+                <button onClick={renameCategory}>Save</button>
               </div>
-            ))
-          )}
-        </div>
-      </div>
-      <div className="bottomSection">
-        <div className="create-category-form">
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Enter category name"
-              value={newCategoryName}
-              onChange={(e) => setNewCategoryName(e.target.value)}
-            />
-            <input
-              type="file"
-              multiple
-              onChange={handleFileChange}
-            />
-            <button onClick={createCategory}>Create new category</button>
+            ) : (
+              <>
+                <div onClick={() => handleNavigate(category.name)}>
+                  {category.name}
+                </div>
+                <button onClick={() => startRenameCategory(index)}>Rename</button>
+                <button onClick={() => deleteCategory(index)}>Delete</button>
+                <div className="files">
+                  {category.files.map((file, fileIndex) => (
+                    <div key={fileIndex} className="file">
+                      {file.name}
+                      <button onClick={() => handleDeleteFile(index, fileIndex)}>Delete</button>
+                    </div>
+                  ))}
+                </div>
+                <input
+                  type="file"
+                  multiple
+                  onChange={(e) => setUploadingFiles(Array.from(e.target.files))}
+                />
+                <button onClick={() => handleAddFiles(index)}>Add Files</button>
+              </>
+            )}
           </div>
-        </div>
+        ))}
       </div>
-    </>
+      <div className="create-category-form">
+        <input
+          type="text"
+          placeholder="Enter category name"
+          value={newCategoryName}
+          onChange={(e) => setNewCategoryName(e.target.value)}
+        />
+        <input
+          type="file"
+          multiple
+          onChange={handleFileChange}
+        />
+        <button onClick={createCategory}>Create new category</button>
+      </div>
+    </div>
   );
 };
 

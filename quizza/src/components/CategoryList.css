@@ -5,51 +5,38 @@
 
 .categories {
   display: flex;
-  flex-wrap: wrap; /* Ensure categories wrap correctly */
-  justify-content: center; /* Center align categories */
+  flex-direction: column;
+  align-items: center;
 }
 
 .category {
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
   margin: 10px;
   width: 80%;
-  max-width: 300px;
+  max-width: 400px;
   background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.bottomSection {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding-top: 30px;
-  background-color: lightgrey;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  box-sizing: border-box;
+  align-items: flex-start;
 }
 
 .create-category-form {
+  margin-top: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-}
-
-.create-category-form .form-group {
-  display: flex;
-  gap: 10px;
 }
 
 .create-category-form input[type="text"],
 .create-category-form input[type="file"] {
   padding: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  width: 80%;
+  max-width: 300px;
 }
 
 .create-category-form button {
@@ -70,7 +57,7 @@
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  margin-left: 5px;
+  margin-top: 5px;
   background-color: #61dafb;
   color: white;
   cursor: pointer;
@@ -83,6 +70,7 @@
 
 .files {
   margin-top: 10px;
+  width: 100%;
 }
 
 .file {
@@ -93,4 +81,30 @@
   background-color: #fff;
   width: 100%;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file button {
+  background-color: #ff4d4d;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.file button:hover {
+  background-color: #ff1a1a;
+}
+
+.category input[type="file"] {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 80%;
+  max-width: 300px;
 }

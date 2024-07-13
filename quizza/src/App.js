@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import Header from './components/Header';
 import Module from './components/Module';
 import CategoryList from './components/CategoryList';
 import CategoryPage from './components/CategoryPage';
+import sampleData from './data/sampleData.json';
 import './App.css';
 
 function App() {
@@ -48,47 +49,45 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={
-              <>
-                {modules.length === 0 && (
-                  <div className="no-modules-message">
-                    No Courses!
-                  </div>
-                )}
-                {modules.length > 0 && (
-                  <div className="modules">
-                    {modules.map(module => (
-                      <Module
-                        key={module.id}
-                        module={module}
-                        onDelete={deleteModule}
-                        onRename={renameModule}
-                      />
-                    ))}
-                  </div>
-                )}
-                <div className="bottomSection">
-                  <input
-                    type="text"
-                    placeholder="Enter module name"
-                    value={newModuleName}
-                    onChange={(e) => setNewModuleName(e.target.value)}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <div className="modules">
+                {modules.map(module => (
+                  <Module
+                    key={module.id}
+                    module={module}
+                    onDelete={deleteModule}
+                    onRename={renameModule}
                   />
-                  <button className="create-module-button" onClick={createModule}>
-                    Create new module
-                  </button>
-                </div>
-              </>
-            } />
-            <Route path="/module/:moduleName" element={<CategoryList />} />
-            <Route path="/module/:moduleName/category/:categoryName/*" element={<CategoryPage />} />
-          </Routes>
-        </div>
+                ))}
+              </div>
+              <div className="create-module-form">
+                <input
+                  type="text"
+                  placeholder="Enter module name"
+                  value={newModuleName}
+                  onChange={(e) => setNewModuleName(e.target.value)}
+                />
+                <button className="create-module-button" onClick={createModule}>
+                  Create new module
+                </button>
+              </div>
+            </>
+          } />
+          <Route path="/module/:moduleName" element={<CategoryList />} />
+          <Route path="/module/:moduleName/category/:categoryName" element={<CategoryRouteWrapper />} />
+        </Routes>
       </div>
     </Router>
   );
 }
+
+const CategoryRouteWrapper = () => {
+  const { moduleName, categoryName } = useParams();
+  // Here, you should fetch or find the data for the specific category
+  // For demonstration, we use sampleData
+  return <CategoryPage data={sampleData} categoryName={categoryName} />;
+};
 
 export default App;

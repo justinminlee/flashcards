@@ -1,10 +1,15 @@
 import React from 'react';
 
-const MainTopic = () => {
+const MainTopic = ({ data }) => {
   return (
-    <div>
-      <h2>Main Topic</h2>
-      <p>Content for Main Topic.</p>
+    <div className="main-topic">
+      <h2>Main Topics</h2>
+      {data.map((topic, index) => (
+        <div key={index} className="topic">
+          <h3>{topic.title}</h3>
+          <p>{topic.description}</p>
+        </div>
+      ))}
     </div>
   );
 };

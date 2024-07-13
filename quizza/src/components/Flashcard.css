@@ -1,0 +1,41 @@
+.flashcards {
+    text-align: center;
+  }
+  
+  .flashcard {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 400px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .flashcard p {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #61dafb;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .controls button:hover {
+    background-color: #21a1f1;
+  }
+  

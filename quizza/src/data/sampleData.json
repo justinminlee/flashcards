@@ -1,0 +1,196 @@
+{
+    "mainTopics": [
+      {
+        "title": "JavaScript Basics",
+        "description": "An introduction to the core concepts and functionalities of JavaScript."
+      },
+      {
+        "title": "JavaScript Variables and Data Types",
+        "description": "Understanding the various data types and how to declare variables in JavaScript."
+      },
+      {
+        "title": "JavaScript Functions",
+        "description": "An overview of functions, their usage, and different ways to define them in JavaScript."
+      },
+      {
+        "title": "JavaScript DOM Manipulation",
+        "description": "Learning how to interact with and manipulate the Document Object Model (DOM) using JavaScript."
+      },
+      {
+        "title": "JavaScript Event Handling",
+        "description": "An introduction to handling user and browser events in JavaScript."
+      }
+    ],
+    "flashcards": [
+      {
+        "description": "What is a closure in JavaScript?",
+        "answer": "A closure is a function that remembers the environment in which it was created, allowing it to access variables from that scope."
+      },
+      {
+        "description": "What is the difference between 'let' and 'var' in JavaScript?",
+        "answer": "'let' is block-scoped while 'var' is function-scoped."
+      },
+      {
+        "description": "Explain the concept of hoisting in JavaScript.",
+        "answer": "Hoisting is JavaScript's behavior of moving declarations to the top of a scope before code execution."
+      },
+      {
+        "description": "What is an Immediately Invoked Function Expression (IIFE)?",
+        "answer": "An IIFE is a function that runs as soon as it is defined."
+      },
+      {
+        "description": "What is the purpose of the 'this' keyword in JavaScript?",
+        "answer": "'this' refers to the object that is currently executing the code."
+      },
+      {
+        "description": "What is the difference between '==' and '===' in JavaScript?",
+        "answer": "'==' compares values after type coercion, while '===' compares values without type coercion."
+      },
+      {
+        "description": "What are arrow functions in JavaScript?",
+        "answer": "Arrow functions are a concise way to write function expressions in JavaScript, using the '=>' syntax."
+      },
+      {
+        "description": "What is the use of promises in JavaScript?",
+        "answer": "Promises are used to handle asynchronous operations, allowing for easier management of asynchronous code."
+      },
+      {
+        "description": "Explain what event delegation is.",
+        "answer": "Event delegation is a technique where a single event listener is added to a parent element to manage events for multiple child elements."
+      },
+      {
+        "description": "What are template literals in JavaScript?",
+        "answer": "Template literals allow for embedded expressions and multi-line strings using backticks (`) instead of quotes."
+      }
+    ],
+    "quizzes": [
+      {
+        "question": "Which method is used to add an element to the end of an array?",
+        "answers": [
+          "push()",
+          "pop()",
+          "shift()",
+          "unshift()"
+        ],
+        "rightAnswer": "push()"
+      },
+      {
+        "question": "How do you declare a JavaScript variable?",
+        "answers": [
+          "var",
+          "let",
+          "const",
+          "All of the above"
+        ],
+        "rightAnswer": "All of the above"
+      },
+      {
+        "question": "What does 'DOM' stand for?",
+        "answers": [
+          "Document Object Model",
+          "Data Object Management",
+          "Document Oriented Model",
+          "Data Organized Method"
+        ],
+        "rightAnswer": "Document Object Model"
+      },
+      {
+        "question": "Which of the following is not a JavaScript data type?",
+        "answers": [
+          "Number",
+          "String",
+          "Boolean",
+          "Float"
+        ],
+        "rightAnswer": "Float"
+      },
+      {
+        "question": "How do you create a function in JavaScript?",
+        "answers": [
+          "function myFunction() {}",
+          "def myFunction() {}",
+          "function:myFunction() {}",
+          "create function myFunction() {}"
+        ],
+        "rightAnswer": "function myFunction() {}"
+      },
+      {
+        "question": "Which operator is used to assign a value to a variable?",
+        "answers": [
+          "*",
+          "-",
+          "=",
+          "+"
+        ],
+        "rightAnswer": "="
+      },
+      {
+        "question": "How do you call a function named 'myFunction'?",
+        "answers": [
+          "call myFunction()",
+          "myFunction()",
+          "call function myFunction()",
+          "execute myFunction()"
+        ],
+        "rightAnswer": "myFunction()"
+      },
+      {
+        "question": "What is the correct syntax for referring to an external script called 'app.js'?",
+        "answers": [
+          "<script href='app.js'>",
+          "<script src='app.js'>",
+          "<script ref='app.js'>",
+          "<script name='app.js'>"
+        ],
+        "rightAnswer": "<script src='app.js'>"
+      },
+      {
+        "question": "How do you write 'Hello World' in an alert box?",
+        "answers": [
+          "msgBox('Hello World');",
+          "alertBox('Hello World');",
+          "msg('Hello World');",
+          "alert('Hello World');"
+        ],
+        "rightAnswer": "alert('Hello World');"
+      },
+      {
+        "question": "How do you comment a single line in JavaScript?",
+        "answers": [
+          "/* This is a comment */",
+          "// This is a comment",
+          "# This is a comment",
+          "-- This is a comment"
+        ],
+        "rightAnswer": "// This is a comment"
+      }
+    ],
+    "relatedTopics": [
+      {
+        "suggestion": "Learn about JavaScript ES6 features.",
+        "linkName": "JavaScript ES6",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Declarations"
+      },
+      {
+        "suggestion": "Explore JavaScript asynchronous programming.",
+        "linkName": "Asynchronous JavaScript",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous"
+      },
+      {
+        "suggestion": "Understand JavaScript event handling.",
+        "linkName": "JavaScript Events",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events"
+      },
+      {
+        "suggestion": "Dive into JavaScript object-oriented programming.",
+        "linkName": "OOP in JavaScript",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects"
+      },
+      {
+        "suggestion": "Learn about JavaScript debugging techniques.",
+        "linkName": "Debugging JavaScript",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Debugging"
+      }
+    ]
+  }
+  
