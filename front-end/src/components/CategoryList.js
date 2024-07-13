@@ -31,9 +31,13 @@ const CategoryList = () => {
       alert('Category name and at least one file are required');
       return;
     }
+    const fileMetadata = files.map(file => ({
+      name: file.name,
+      type: file.type
+    }));
     const newCategory = {
       name: newCategoryName,
-      files
+      files: fileMetadata
     };
     setCategories([...categories, newCategory]);
     setNewCategoryName('');
@@ -73,10 +77,20 @@ const CategoryList = () => {
       alert('Please select files to upload');
       return;
     }
+    const fileMetadata = uploadingFiles.map(file => ({
+      name: file.name,
+      type: file.type
+    }));
     const updatedCategories = [...categories];
-    updatedCategories[index].files = [...updatedCategories[index].files, ...uploadingFiles];
+    updatedCategories[index].files = [...updatedCategories[index].files, ...fileMetadata];
     setCategories(updatedCategories);
     setUploadingFiles([]);
+  };
+
+  const handleDeleteFile = (categoryIndex, fileIndex) => {
+    const updatedCategories = [...categories];
+    updatedCategories[categoryIndex].files = updatedCategories[categoryIndex].files.filter((_, i) => i !== fileIndex);
+    setCategories(updatedCategories);
   };
 
   return (
@@ -102,9 +116,10 @@ const CategoryList = () => {
                 <button onClick={() => startRenameCategory(index)}>Rename</button>
                 <button onClick={() => deleteCategory(index)}>Delete</button>
                 <div className="files">
-                  {category.files.map((file, i) => (
-                    <div key={i} className="file">
+                  {category.files.map((file, fileIndex) => (
+                    <div key={fileIndex} className="file">
                       {file.name}
+                      <button onClick={() => handleDeleteFile(index, fileIndex)}>Delete</button>
                     </div>
                   ))}
                 </div>

@@ -1,0 +1,69 @@
+.category-page {
+  padding: 20px;
+}
+
+.category-page h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  justify-content: center;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tabs button:hover {
+  background-color: #f1f1f1;
+}
+
+.tabs .active {
+  background-color: #ddd;
+  border-bottom: 2px solid #61dafb;
+}
+
+.content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+}
+
+.main-topic, .flashcards, .quiz, .related-topics {
+  margin-bottom: 20px;
+}
+
+.topic {
+  margin-top: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.topic h3 {
+  margin: 0;
+}
+
+.topic p {
+  margin: 5px 0;
+}
+
+.flashcard, .quiz-item, .related-topic {
+  margin-top: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.flashcard p, .quiz-item p, .related-topic p {
+  margin: 5px 0;
+}
