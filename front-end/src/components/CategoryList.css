@@ -1,25 +1,41 @@
 .category-list {
-  text-align: center;
-  padding: 20px;
-}
-
-.categories {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .category {
-  border: 1px solid #ccc;
+  border: 1px solid #d3d4d6;
   border-radius: 10px;
   padding: 15px;
   margin: 10px;
-  width: 80%;
-  max-width: 400px;
+  width: 300px;
   background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.category:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.category-buttons button {
+  margin-left: 5px;
 }
 
 .create-category-form {
@@ -98,6 +114,10 @@
 
 .file button:hover {
   background-color: #ff1a1a;
+}
+
+.category-name {
+  font-weight: bold !important;
 }
 
 .category input[type="file"] {

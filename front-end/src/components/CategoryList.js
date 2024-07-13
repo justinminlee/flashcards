@@ -13,7 +13,6 @@ const CategoryList = () => {
   const [uploadingFiles, setUploadingFiles] = useState([]);
   const navigate = useNavigate();
 
-  // Load categories from localStorage when the component mounts
   useEffect(() => {
     const savedCategories = localStorage.getItem(`categories-${moduleName}`);
     if (savedCategories) {
@@ -21,7 +20,6 @@ const CategoryList = () => {
     }
   }, [moduleName]);
 
-  // Save categories to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem(`categories-${moduleName}`, JSON.stringify(categories));
   }, [categories, moduleName]);
@@ -110,11 +108,15 @@ const CategoryList = () => {
               </div>
             ) : (
               <>
-                <div onClick={() => handleNavigate(category.name)}>
-                  {category.name}
+                <div className="category-header">
+                  <div className="category-name" onClick={() => handleNavigate(category.name)}>
+                    {category.name}
+                  </div>
+                  <div className="category-buttons">
+                    <button onClick={() => startRenameCategory(index)}>Rename</button>
+                    <button onClick={() => deleteCategory(index)}>Delete</button>
+                  </div>
                 </div>
-                <button onClick={() => startRenameCategory(index)}>Rename</button>
-                <button onClick={() => deleteCategory(index)}>Delete</button>
                 <div className="files">
                   {category.files.map((file, fileIndex) => (
                     <div key={fileIndex} className="file">

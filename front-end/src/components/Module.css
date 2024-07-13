@@ -12,6 +12,7 @@
   }
   
   .module:hover {
+    cursor: pointer;
     transform: scale(1.05);
 }
   
@@ -27,7 +28,7 @@
   }
   
   .module button:hover {
-    background-color: #4277ea;
+    background-color: #245bd2;
   }
   
   .module input {

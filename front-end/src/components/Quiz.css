@@ -36,11 +36,11 @@
   }
   
   .answer-button.selected {
-    background-color: #21a1f1;
+    background-color: #245bd2;
   }
   
   .answer-button:hover {
-    background-color: #21a1f1;
+    background-color: #245bd2;
   }
   
   .feedback {
@@ -67,7 +67,7 @@
   }
   
   .controls button:hover {
-    background-color: #4277ea;
+    background-color: #245bd2;
   }
   
   .controls button:disabled {

@@ -9,7 +9,7 @@
 
 .tabs {
   display: flex;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #d3d4d6;
   justify-content: center;
 }
 
