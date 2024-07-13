@@ -37,7 +37,10 @@ app.use((req, res, next) => {
 app.post("/new_module", handleModuleCreation);
 
 // USE FOR MODULE DELETION
-app.post("/delete_module", handleModuleDeletion);
+app.post('/delete_module', (req, res, next) => {
+  console.log('Request body:', req.body);
+  next();
+}, handleModuleDeletion);
 
 app.post('/upload', generateAnkiCards);
 

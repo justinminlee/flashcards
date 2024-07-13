@@ -20,22 +20,30 @@ const handleModuleCreation = async (req, res) => {
   // deleting a module based on id
   
   const handleModuleDeletion = async (req, res) => {
-    if (!req.body.id) {
-      return res.status(400).send('No module name uploaded');
+    const { id } = req.body;
+  
+    if (!id) {
+      return res.status(400).send({ message: 'No module ID provided' });
     }
   
     try {
-      const numDeleted = await req.db('user').where('Course', req.body.id).del();
+      console.log(`Attempting to delete module with ID: ${id}`);
+      // Update the query to use 'Id' instead of 'Course'
+      const numDeleted = await req.db('user').where('Id', id).del();
+  
       if (numDeleted) {
-        return res.status(200).send({ message: `Module '${req.body.id}' deleted successfully` });
+        console.log(`Module with ID '${id}' deleted successfully`);
+        return res.status(200).send({ message: `Module with ID '${id}' deleted successfully` });
       } else {
-        return res.status(404).send({ message: `Module '${req.body.id}' not found` });
+        console.log(`Module with ID '${id}' not found`);
+        return res.status(404).send({ message: `Module with ID '${id}' not found` });
       }
     } catch (error) {
-      console.error(error);
-      return res.status(500).send('Error deleting module');
+      console.error('Unexpected error:', error);
+      return res.status(500).send({ message: 'Unexpected error' });
     }
   };
+  
   
   module.exports = { handleModuleCreation, handleModuleDeletion };
   

@@ -64,25 +64,25 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify({ id }),  // Make sure id is a valid string or number
     })
     .then(response => {
       if (!response.ok) {
         return response.text().then(text => {
-          throw new Error('Network response was not ok: ' + response.statusText + ' - ' + text);
+          throw new Error(`Network response was not ok: ${response.statusText} - ${text}`);
         });
       }
       return response.json();
     })
     .then(data => {
-      setModules(modules.filter(module => module.id !== id));
+      setModules(modules.filter(module => module.id !== id));  // Make sure this filters based on the correct id
       console.log('Module deleted:', data);
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
   };
-
+  
   const renameModule = (id, newName) => {
     setModules(modules.map(module => module.id === id ? { ...module, name: newName } : module));
   };
