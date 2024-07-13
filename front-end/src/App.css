@@ -7,7 +7,7 @@
 .modules {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
+  padding: 10px 10px;
   flex-wrap: wrap;
 }
 
@@ -30,12 +30,12 @@
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  background-color: #61dafb;
+  background-color: #709af5;
   color: white;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
 
 .create-module-button:hover {
-  background-color: #21a1f1;
+  background-color: #4277ea;
 }

@@ -47,37 +47,39 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div>
         <Header />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <div className="modules">
-                {modules.map(module => (
-                  <Module
-                    key={module.id}
-                    module={module}
-                    onDelete={deleteModule}
-                    onRename={renameModule}
+        <div className="App">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <div className="modules">
+                  {modules.map(module => (
+                    <Module
+                      key={module.id}
+                      module={module}
+                      onDelete={deleteModule}
+                      onRename={renameModule}
+                    />
+                  ))}
+                </div>
+                <div className="create-module-form">
+                  <input
+                    type="text"
+                    placeholder="Enter module name"
+                    value={newModuleName}
+                    onChange={(e) => setNewModuleName(e.target.value)}
                   />
-                ))}
-              </div>
-              <div className="create-module-form">
-                <input
-                  type="text"
-                  placeholder="Enter module name"
-                  value={newModuleName}
-                  onChange={(e) => setNewModuleName(e.target.value)}
-                />
-                <button className="create-module-button" onClick={createModule}>
-                  Create new module
-                </button>
-              </div>
-            </>
-          } />
-          <Route path="/module/:moduleName" element={<CategoryList />} />
-          <Route path="/module/:moduleName/category/:categoryName" element={<CategoryRouteWrapper />} />
-        </Routes>
+                  <button className="create-module-button" onClick={createModule}>
+                    Create new module
+                  </button>
+                </div>
+              </>
+            } />
+            <Route path="/module/:moduleName" element={<CategoryList />} />
+            <Route path="/module/:moduleName/category/:categoryName" element={<CategoryRouteWrapper />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
