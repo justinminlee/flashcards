@@ -1,0 +1,32 @@
+.App {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.flash-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.flash-card .answer {
+  color: green;
+  font-weight: bold;
+}
+
+.test-question {
+  margin-bottom: 20px;
+}
+
+.test-results .correct {
+  color: green;
+}
+
+.test-results .incorrect {
+  color: red;
+}
+
+section {
+  margin-bottom: 40px;
+}
