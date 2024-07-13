@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './Flashcard.css';
 
@@ -23,12 +22,17 @@ const Flashcards = ({ data }) => {
   return (
     <div className="flashcards">
       <h2>Flashcards</h2>
-      <div className="flashcard" onClick={handleFlip}>
-        {showAnswer ? (
-          <p>{data[currentIndex].answer}</p>
-        ) : (
+      <div className={`flashcard ${showAnswer ? 'show-answer' : ''}`} onClick={handleFlip}>
+        <div className="flashcard-inner">
+        <div className="flashcard-front">
+          <p style={{ fontWeight: 'bold' }}>Question</p>
           <p>{data[currentIndex].description}</p>
-        )}
+        </div>
+        <div className="flashcard-back">
+          <p style={{ fontWeight: 'bold' }}>Solution</p>
+          <p>{data[currentIndex].answer}</p>
+        </div>
+        </div>
       </div>
       <div className="controls">
         <button onClick={handlePrev}>Previous</button>

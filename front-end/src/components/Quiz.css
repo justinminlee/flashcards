@@ -29,18 +29,18 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #61dafb;
+    background-color: #709af5;
     color: white;
     cursor: pointer;
     transition: background-color 0.2s;
   }
   
   .answer-button.selected {
-    background-color: #21a1f1;
+    background-color: #245bd2;
   }
   
   .answer-button:hover {
-    background-color: #21a1f1;
+    background-color: #245bd2;
   }
   
   .feedback {
@@ -60,14 +60,14 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #61dafb;
+    background-color: #709af5;
     color: white;
     cursor: pointer;
     transition: background-color 0.2s;
   }
   
   .controls button:hover {
-    background-color: #21a1f1;
+    background-color: #245bd2;
   }
   
   .controls button:disabled {

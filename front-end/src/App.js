@@ -29,16 +29,53 @@ function App() {
       alert('Module name cannot be empty');
       return;
     }
+  
     const newModule = {
-      id: modules.length ? modules[modules.length - 1].id + 1 : 1,
       name: newModuleName
     };
-    setModules([...modules, newModule]);
-    setNewModuleName('');
+  
+    fetch('http://localhost:4000/new_module', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newModule)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Assuming the backend returns the new module with its ID
+      const createdModule = { id: data.id, name: newModuleName };
+      setModules([...modules, createdModule]);
+      setNewModuleName('');
+      console.log('Success:', data);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
   };
-
+  
   const deleteModule = (id) => {
-    setModules(modules.filter(module => module.id !== id));
+    fetch(`http://localhost:4000/modules/${id}`, {
+      method: 'DELETE',
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      setModules(modules.filter(module => module.id !== id));
+      console.log('Module deleted:', data);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
   };
 
   const renameModule = (id, newName) => {

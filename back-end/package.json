@@ -4,6 +4,7 @@
     "express": "^4.19.2",
     "express-fileupload": "^1.5.0",
     "express-generator": "^4.16.1",
+<<<<<<< HEAD
     "knex": "^3.1.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.10.2",
@@ -11,5 +12,9 @@
     "openai": "^4.52.7",
     "pdf-parse": "^1.1.1",
     "uuid": "^10.0.0"
+=======
+    "openai": "^4.52.7",
+    "pdf-parse": "^1.1.1"
+>>>>>>> 0745fe6fa53e90382f916c1a903d6cf955b490e1
   }
 }

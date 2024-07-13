@@ -8,13 +8,16 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Quiz</Link>
+      <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <span style={{ color: 'white' }}>Flash</span>
+        <span style={{ color: '#709af5' }}>Cards</span>
+      </Link>
       </div>
       <div className="user-info">
         <span>User_7389</span>
         <div className="fire">
-          <FontAwesomeIcon icon={faFire} />
-          <span className="number">5</span>
+          <FontAwesomeIcon icon={faFire} style={{ color: '#709af5' }} />
+          <span className="number" style={{ color: '#709af5' }}>5</span>
         </div>
       </div>
     </header>
