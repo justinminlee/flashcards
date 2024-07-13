@@ -2,6 +2,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "express-generator": "^4.16.1"
+    "express-fileupload": "^1.5.0",
+    "express-generator": "^4.16.1",
+    "openai": "^4.52.7",
+    "pdf-parse": "^1.1.1"
   }
 }
