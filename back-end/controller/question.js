@@ -3,7 +3,7 @@ const { OpenAI } = require("openai");
 const fs = require("fs");
 
 const openai = new OpenAI({
-    apiKey: "sk-None-6cG6sCXSevpKq6b1w168T3BlbkFJodr1gVnf866r9eTZNEq4"
+    apiKey: null
 });
 
 let example_response = fs.readFileSync(`${__dirname}/structure.json`, 'utf-8');

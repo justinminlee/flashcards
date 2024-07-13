@@ -2,13 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
 const bodyParser = require("body-parser");
-const { OpenAI } = require("openai");
 const fileUpload = require('express-fileupload');
 const pdfParser = require('pdf-parse');
-
-const openai = new OpenAI({
-  apiKey: "sk-proj-UMDEM0WkAQ7WP2yUNGa9T3BlbkFJRneYtDWmQ6eA0Tammv5O",
-});
 
 
 const app = express();
@@ -22,6 +17,9 @@ app.use(cors());
 app.use(express.json()); // Middleware to parse JSON in the request body
 
 const { generateAnkiCards } = require('./controller/question');
+
+app.post("/new_module", )
+
 
 app.post('/upload', generateAnkiCards);
 
