@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #282c34;
+    color: white;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-info span {
+    margin-right: 20px;
+  }
+  
+  .fire {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    color: white;
+  }
+  
+  .fire .number {
+    margin-left: 5px;
+    font-size: 20px;
+  }
+  
