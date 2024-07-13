@@ -12,6 +12,10 @@ const Module = ({ module, onDelete, onRename }) => {
     setIsEditing(false);
   };
 
+  const handleDelete = () => {
+    onDelete(module.id);
+  };
+
   const handleNavigate = () => {
     navigate(`/module/${module.name}`);
   };
@@ -31,7 +35,7 @@ const Module = ({ module, onDelete, onRename }) => {
         <h3 onClick={handleNavigate}>{module.name}</h3>
       )}
       <button onClick={() => setIsEditing(true)}>Rename</button>
-      <button onClick={() => onDelete(module.id)}>Delete</button>
+      <button onClick={handleDelete}>Delete</button>
     </div>
   );
 };

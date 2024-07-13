@@ -29,11 +29,11 @@ function App() {
       alert('Module name cannot be empty');
       return;
     }
-  
+
     const newModule = {
       name: newModuleName
     };
-  
+
     fetch('http://localhost:4000/new_module', {
       method: 'POST',
       headers: {
@@ -48,7 +48,6 @@ function App() {
       return response.json();
     })
     .then(data => {
-      // Assuming the backend returns the new module with its ID
       const createdModule = { id: data.id, name: newModuleName };
       setModules([...modules, createdModule]);
       setNewModuleName('');
@@ -58,14 +57,20 @@ function App() {
       console.error('There was a problem with the fetch operation:', error);
     });
   };
-  
+
   const deleteModule = (id) => {
-    fetch(`http://localhost:4000/modules/${id}`, {
-      method: 'DELETE',
+    fetch('http://localhost:4000/delete_module', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }),
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
+        return response.text().then(text => {
+          throw new Error('Network response was not ok: ' + response.statusText + ' - ' + text);
+        });
       }
       return response.json();
     })
@@ -122,8 +127,6 @@ function App() {
 
 const CategoryRouteWrapper = () => {
   const { moduleName, categoryName } = useParams();
-  // Here, you should fetch or find the data for the specific category
-  // For demonstration, we use sampleData
   return <CategoryPage data={sampleData} categoryName={categoryName} />;
 };
 
