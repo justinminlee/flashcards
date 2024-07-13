@@ -11,7 +11,7 @@ app.use(express.json()); // Middleware to parse JSON in the request body
 
 // app.use(express.static(`${__dirname}/story/movies`));
 
-app.get('/users', async (req, res) => {
+app.get('/upload_file', async (req, res) => {
     try {
         const data = fs.readFileSync('data.json', 'utf8');
         return res.send(data);
