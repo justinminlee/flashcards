@@ -6,8 +6,8 @@
 .flashcard {
   position: relative;
   width: 80%;
-  max-width: 400px;
-  height: 100px;
+  max-width: 450px;
+  height: 150px;
   margin: 20px auto;
   cursor: pointer;
   transform-style: preserve-3d;
@@ -35,7 +35,6 @@
   backface-visibility: hidden;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
   background-color: #f9f9f9;
 }
 
